@@ -1,5 +1,6 @@
 import 'package:base_structure/app+injection/di.dart';
 import 'package:base_structure/core/helper/screen_util/screen_helper.dart';
+import 'package:base_structure/core/navigation/routes.dart';
 import 'package:base_structure/core/resources/colors.dart';
 import 'package:base_structure/core/resources/constants.dart';
 import 'package:base_structure/presentation/flows/home_flow/bloc/home_bloc.dart';
@@ -9,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../components/custom_button.dart';
 
@@ -81,7 +83,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
               ScreenUtil().setVerticalSpacing(10),
               CustomButton(
                 text: 'Go to page 1',
-                onPress: () {},
+                onPress: () {
+                  context.push(RoutesPath.animationPage);
+                },
               ),
               ScreenUtil().setVerticalSpacing(20),
               CustomButton(

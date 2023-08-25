@@ -7,6 +7,7 @@ import '../../app+injection/app.dart';
 
 import '../../app+injection/di.dart';
 
+import '../../presentation/flows/home_flow/screens/animations_screen.dart';
 import '../../presentation/flows/home_flow/screens/home_screen.dart';
 import '../../presentation/flows/startup_flow/screens/splash_screen.dart';
 import '../blocs/application_bloc/app_bloc.dart';
@@ -21,37 +22,9 @@ class RoutesPath {
 
   static String get welcomePage => '/welcome';
 
-  static String get loginPage => '$profilePage/login';
-
-  static String get forgetPasswordPage => '$loginPage/forget-password';
-
-  static String get register => '$loginPage/register';
-
-  static String get verifyCodePage => '$forgetPasswordPage/verify-code';
-
-  static String get resetPasswordPage => '$verifyCodePage/reset-password';
-
-  static String get changePasswordSuccessPage => '$resetPasswordPage/change-success';
-
   static String get homepage => '/home';
 
-  static String get productDetails => '/product-details';
-
-  static String get category => '/category';
-
-  static String get categoryDetailPage => '/category/detail';
-
-  static String get bag => '/bag';
-
-  static String get preCheckoutForm => '$bag/pre-checkout-form';
-
-  static String get deliveryMethod => '$preCheckoutForm/delivery-method';
-
-  static String get products => '/products';
-
-  static String get wishList => '/wishlist';
-
-  static String get profilePage => '/profile';
+  static String get animationPage => '$homepage/animation';
 }
 
 final router = GoRouter(
@@ -84,14 +57,12 @@ final List<RouteBase> routes = [
       name: 'home',
       path: '/home',
       builder: (context, state) => const HomeScreen(),
-      redirect: (context, goRouterState) {
-        if (locator<AppBloc>().state.appStatus == Status.authorized &&
-            goRouterState.path == RoutesPath.loginPage) {
-          //return RoutesPath.rootPage;
-        }
-        return null;
-      },
-      routes: []),
+      routes: [
+        GoRoute(
+          path: 'animation',
+          builder: (context, state) => const AnimationScreen(),
+        )
+      ]),
 ];
 
 class GoRouterRefreshStream extends ChangeNotifier {

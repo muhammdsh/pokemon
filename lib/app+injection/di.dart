@@ -19,6 +19,7 @@ import '../core/services/init_app_store.dart';
 import '../data/datasources/exchage_data_source/exchange_data_source_impl.dart';
 import '../domain/repositories/exchange_repository.dart';
 import '../presentation/façades/app_facade.dart';
+import '../presentation/flows/home_flow/bloc/animation/animation_cubit.dart';
 import '../presentation/flows/home_flow/bloc/home_bloc.dart';
 
 final locator = GetIt.instance;
@@ -70,6 +71,7 @@ Future<void> setUpLocator() async {
   locator.registerLazySingleton(() => ConvertExchangeUseCase());
 
   locator.registerLazySingleton(() => HomeBloc());
+  locator.registerFactory(() => AnimationCubit());
 
   locator<BlocHub>().registerByName(locator<AppBloc>(), MembersKeys.appBloc);
   locator<BlocHub>().registerByName(locator<HomeBloc>(), MembersKeys.exchangeBloc);
