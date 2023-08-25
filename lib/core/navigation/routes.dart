@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-
 import '../../app+injection/app.dart';
 
 import '../../app+injection/di.dart';
 
+import '../../presentation/flows/home_flow/screens/home_screen.dart';
 import '../../presentation/flows/startup_flow/screens/splash_screen.dart';
 import '../blocs/application_bloc/app_bloc.dart';
 import '../mediators/communication_types/AppStatus.dart';
@@ -36,7 +36,6 @@ class RoutesPath {
   static String get homepage => '/home';
 
   static String get productDetails => '/product-details';
-
 
   static String get category => '/category';
 
@@ -75,7 +74,6 @@ final List<RouteBase> routes = [
     redirect: (context, goState) {
       if (locator<AppBloc>().state.appStatus == Status.unauthorized &&
           goState.location == RoutesPath.splashScreen) {
-
         return RoutesPath.homepage;
       }
       return null;
@@ -85,11 +83,7 @@ final List<RouteBase> routes = [
       parentNavigatorKey: rootNavigatorKey,
       name: 'home',
       path: '/home',
-      builder: (context, state) => const Scaffold(
-            body: Center(
-              child: Text('home'),
-            ),
-          ),
+      builder: (context, state) => const HomeScreen(),
       redirect: (context, goRouterState) {
         if (locator<AppBloc>().state.appStatus == Status.authorized &&
             goRouterState.path == RoutesPath.loginPage) {
@@ -98,7 +92,6 @@ final List<RouteBase> routes = [
         return null;
       },
       routes: []),
-
 ];
 
 class GoRouterRefreshStream extends ChangeNotifier {

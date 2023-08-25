@@ -1,6 +1,15 @@
 import 'package:base_structure/app+injection/di.dart';
+import 'package:base_structure/core/helper/screen_util/screen_helper.dart';
+import 'package:base_structure/core/resources/colors.dart';
+import 'package:base_structure/core/resources/constants.dart';
 import 'package:base_structure/presentation/flows/home_flow/bloc/home_bloc.dart';
+import 'package:base_structure/presentation/flows/home_flow/components/clear_button.dart';
+import 'package:base_structure/presentation/flows/home_flow/components/custom_input.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../components/custom_button.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,18 +23,66 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
 
   @override
   void dispose() {
-    bloc.close();
+    // bloc.close();
     super.dispose();
   }
 
   @override
   initState() {
     super.initState();
-    bloc.makeAction();
+    //  bloc.makeAction();
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        leadingWidth: 0.sp,
+        centerTitle: false,
+        title: Text(
+          'Home',
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge
+              ?.copyWith(color: locator<AppThemeColors>().white),
+        ),
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 18.0.sp),
+          child: Column(
+            children: [
+              ScreenUtil().setVerticalSpacing(40),
+              CustomInput(
+                hint: 'Enter your name',
+                onChanged: (String text) {},
+              ),
+              ScreenUtil().setVerticalSpacing(40),
+              Text('Name',
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge
+                      ?.copyWith(color: locator<AppThemeColors>().black)),
+              const Spacer(),
+              ClearButton(
+                onClear: () {},
+              ),
+              ScreenUtil().setVerticalSpacing(10),
+
+              CustomButton(
+                text: 'Go to page 1',
+                onPress: () {},
+              ),
+              ScreenUtil().setVerticalSpacing(20),
+              CustomButton(
+                text: 'Go to page 2',
+                onPress: () {},
+                backgroundColor: locator<AppThemeColors>().primaryColor,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

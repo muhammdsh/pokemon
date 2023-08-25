@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 
 enum AppThemeMode { dark, light }
 
-abstract class  AppThemeColors {
+abstract class AppThemeColors {
   Color get primaryColor;
 
   Color get primaryColor100;
+
   Color get primaryColor400;
 
   Color get grey;
+
+  Color get error;
 
   Color get text;
 
@@ -22,20 +25,22 @@ abstract class  AppThemeColors {
 
   Color get secondaryColor;
 
-  Color get accentColor;
+  Color get accentRed;
 
   Color get transparent;
+
   Color get divider;
 
   List<Color> get gradientColor;
 
   Color get gradientStarts;
+
   Color get gradientEnds;
 }
 
 class LightModeColors extends AppThemeColors {
   @override
-  Color get primaryColor => const Color(0xff513070);
+  Color get primaryColor => const Color(0xff63B2F2);
 
   @override
   Color get primaryColor100 => const Color(0xffc9bfd3);
@@ -53,13 +58,13 @@ class LightModeColors extends AppThemeColors {
   Color get black => Colors.black;
 
   @override
-  Color get secondaryColor => const Color(0xff623B85);
+  Color get secondaryColor => const Color(0xff0D47A1);
+
+
 
   @override
-  Color get accentColor => const Color(0xffe6e6e6);
+  Color get text => const Color(0xFF8F8989);
 
-  @override
-  Color get text => const Color(0xff2E2E2E);
 
   @override
   Color get transparent => Colors.transparent;
@@ -71,21 +76,23 @@ class LightModeColors extends AppThemeColors {
   List<Color> get gradientColor => [primaryColor, const Color(0xff331F46)];
 
   @override
-  Color get gradientStarts => primaryColor ;
+  Color get gradientStarts => primaryColor;
 
   @override
   Color get gradientEnds => const Color(0xff331F46);
 
   @override
-  Color get divider => const Color(0x5EC7C8C8);
+  Color get divider => const Color(0xFF8F8989);
+
 
   @override
   Color get primaryColor400 => const Color(0xff74598d);
 
+  @override
+  Color get error => const Color(0xffE11E1E);
 
-
-
-
+  @override
+  Color get accentRed =>  const Color(0xFFF26363);
 }
 
 class DarkModeColors extends AppThemeColors {
@@ -111,10 +118,13 @@ class DarkModeColors extends AppThemeColors {
   Color get secondaryColor => const Color(0xff8a749f);
 
   @override
-  Color get accentColor => const Color(0xffe6e6e6);
+  Color get error => const Color(0xffE11E1E);
 
   @override
-  Color get text => const Color(0xffc2c0c2);
+  Color get accentRed =>  const Color(0xFFF26363);
+
+  @override
+  Color get text => const Color(0xFF8F8989);
 
   @override
   Color get transparent => Colors.transparent;
@@ -136,6 +146,8 @@ class DarkModeColors extends AppThemeColors {
 
   @override
   Color get divider => const Color(0x5EC7C8C8);
+
+
 }
 
 class ThemeFactory {

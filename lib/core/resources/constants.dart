@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TranslationsKeys {
-
-
   static String get settings => "settings";
 
   static String get english => "english";
@@ -21,8 +19,7 @@ class ImagesKeys {
   static String get welcomeBackground => "lib/assets/welcomBg.png";
 
   static String get logo => "lib/assets/images/png/logo.png";
-
-
+  static String get clear => "lib/assets/images/svg/clear.svg";
 }
 
 class AppTheme {
@@ -32,11 +29,14 @@ class AppTheme {
       colorScheme: colorScheme ??
           ColorScheme.fromSwatch(
             backgroundColor: appThemeColors.backgroundColor,
+            primarySwatch: appThemeColors.primaryColor.toMaterialColor(),
             brightness: brightness,
           ),
       scaffoldBackgroundColor: appThemeColors.backgroundColor,
       primaryColor: appThemeColors.primaryColor,
       primaryColorLight: appThemeColors.primaryColor100,
+      appBarTheme: AppBarTheme(color: appThemeColors.primaryColor),
+      progressIndicatorTheme: ProgressIndicatorThemeData(color: appThemeColors.primaryColor),
       iconTheme: IconThemeData(
         color: appThemeColors.primaryColor,
         size: 18.sp,
@@ -65,7 +65,7 @@ class AppTheme {
         bodyLarge: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w400),
         bodyMedium: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
         bodySmall: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400),
-        titleLarge: TextStyle(fontSize: 22.sp, fontWeight: FontWeight.w400),
+        titleLarge: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w400),
         titleMedium: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500),
         titleSmall: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
         labelLarge: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),

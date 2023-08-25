@@ -96,7 +96,7 @@ flutter:
   # https://flutter.dev/assets-and-images/#from-packages
   assets:
     - lib/assets/images/svg/
-    - lib/assets/images/png/logo.png
+    - lib/assets/images/png/
     - lib/assets/lang/en.json
     - lib/assets/lang/ar.json
   fonts:
