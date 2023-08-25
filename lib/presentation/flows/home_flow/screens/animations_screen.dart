@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../app+injection/di.dart';
 import '../../../../core/resources/colors.dart';
+import '../../../custom_widgets/custom_app_bar.dart';
 import '../bloc/animation/animation_cubit.dart';
 import '../components/animated_shape.dart';
 import '../components/row_shape_types.dart';
@@ -25,25 +26,7 @@ class _AnimationScreenState extends State<AnimationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: false,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: locator<AppThemeColors>().white,
-          ),
-          onPressed: () {
-            context.pop();
-          },
-        ),
-        title: Text(
-          'Animations',
-          style: Theme.of(context)
-              .textTheme
-              .titleLarge
-              ?.copyWith(color: locator<AppThemeColors>().white),
-        ),
-      ),
+      appBar: const CustomAppBar(title: 'Animations'),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 32.sp),

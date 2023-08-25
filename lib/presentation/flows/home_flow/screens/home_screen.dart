@@ -90,7 +90,9 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
               ScreenUtil().setVerticalSpacing(20),
               CustomButton(
                 text: 'Go to page 2',
-                onPress: () {},
+                onPress: () {
+                  context.push(RoutesPath.pokemonPage);
+                },
                 backgroundColor: locator<AppThemeColors>().primaryColor,
               ),
             ],

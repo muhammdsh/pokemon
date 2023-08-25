@@ -15,6 +15,7 @@ class AnimatedShape extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
+      curve: Curves.linear,
       width: ScreensHelper.of(context).fromWidth(100) - (32.sp * 2),
       height: ScreensHelper.of(context).fromWidth(100) - (32.sp * 2),
       decoration: BoxDecoration(
