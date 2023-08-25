@@ -6,6 +6,7 @@ import 'package:base_structure/presentation/flows/home_flow/bloc/home_bloc.dart'
 import 'package:base_structure/presentation/flows/home_flow/components/clear_button.dart';
 import 'package:base_structure/presentation/flows/home_flow/components/custom_input.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -20,17 +21,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
   final bloc = locator<HomeBloc>();
+  final TextEditingController controller = TextEditingController();
 
   @override
   void dispose() {
     // bloc.close();
     super.dispose();
-  }
-
-  @override
-  initState() {
-    super.initState();
-    //  bloc.makeAction();
   }
 
   @override
@@ -53,22 +49,36 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
           child: Column(
             children: [
               ScreenUtil().setVerticalSpacing(40),
-              CustomInput(
-                hint: 'Enter your name',
-                onChanged: (String text) {},
+              BlocBuilder<HomeBloc, HomeState>(
+                bloc: bloc,
+                builder: (context, state) {
+                  return Column(
+                    children: [
+                      CustomInput(
+                        controller: controller,
+                        hint: 'Enter your name',
+                        onChanged: (String text) {
+                          bloc.onTextChangedAction(text);
+                        },
+                      ),
+                      ScreenUtil().setVerticalSpacing(40),
+                      Text(state.text,
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge
+                              ?.copyWith(color: locator<AppThemeColors>().black)),
+                    ],
+                  );
+                },
               ),
-              ScreenUtil().setVerticalSpacing(40),
-              Text('Name',
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleLarge
-                      ?.copyWith(color: locator<AppThemeColors>().black)),
               const Spacer(),
               ClearButton(
-                onClear: () {},
+                onClear: () {
+                  controller.clear();
+                  bloc.onClearAction();
+                },
               ),
               ScreenUtil().setVerticalSpacing(10),
-
               CustomButton(
                 text: 'Go to page 1',
                 onPress: () {},

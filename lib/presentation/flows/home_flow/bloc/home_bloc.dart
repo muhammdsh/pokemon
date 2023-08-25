@@ -13,10 +13,9 @@ part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> with BlocMember {
-  final GetCurrencyUseCase getCurrencyUseCase;
-
-  HomeBloc(this.getCurrencyUseCase) : super(const HomeState()) {
-    on<BaseEvent>(_onGetCurrencies);
+  HomeBloc() : super(const HomeState()) {
+    on<OnTextChangedEvent>(_onTextChanged);
+    on<OnClearTextEvent>(_onTextCleared);
   }
 
   @override
@@ -28,21 +27,23 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> with BlocMember {
 }
 
 extension ExchangeBlocMappers on HomeBloc {
-  void _onGetCurrencies(BaseEvent event, Emitter<HomeState> emit) async {
-    emit(state.copyWith(
-      status: PageStatus.loading,
-    ));
+  void _onTextChanged(OnTextChangedEvent event, Emitter<HomeState> emit) async {
+    emit(state.copyWith(text: event.text));
+  }
+
+  void _onTextCleared(OnClearTextEvent event, Emitter<HomeState> emit) async {
+    emit(state.copyWith(text: ''));
   }
 }
 
-
-
-
 extension HomeActions on HomeBloc {
-  void makeAction() {
-    add(BaseEvent());
+  void onTextChangedAction(String text) {
+    add(OnTextChangedEvent(text));
   }
 
+  void onClearAction() {
+    add(OnClearTextEvent());
+  }
 }
 
 class HomeConnection extends CommunicationType {

@@ -21,7 +21,6 @@ import '../domain/repositories/exchange_repository.dart';
 import '../presentation/façades/app_facade.dart';
 import '../presentation/flows/home_flow/bloc/home_bloc.dart';
 
-
 final locator = GetIt.instance;
 
 Future<void> setUpLocator() async {
@@ -31,11 +30,11 @@ Future<void> setUpLocator() async {
 
   locator.registerLazySingleton<InitAppStore>(() => InitAppStore());
 
-  locator.registerLazySingleton<SetAppThemeUseCase>(
-      () => SetAppThemeUseCase(locator<ThemeStore>()));
+  locator
+      .registerLazySingleton<SetAppThemeUseCase>(() => SetAppThemeUseCase(locator<ThemeStore>()));
 
-  locator.registerLazySingleton<GetAppThemeUseCase>(
-      () => GetAppThemeUseCase(locator<ThemeStore>()));
+  locator
+      .registerLazySingleton<GetAppThemeUseCase>(() => GetAppThemeUseCase(locator<ThemeStore>()));
 
   locator.registerLazySingleton<CheckFirstInitUseCase>(
       () => CheckFirstInitUseCase(locator<InitAppStore>()));
@@ -49,29 +48,18 @@ Future<void> setUpLocator() async {
   locator.registerLazySingleton<AuthInterceptor>(
       () => AuthInterceptor(locator<SessionManager>(), locator<Dio>()));
 
-
-
-
-
   locator.registerLazySingleton<AppUiFacade>(() => AppUiFacade(
         setAppThemeUseCase: locator<SetAppThemeUseCase>(),
         getAppThemeUseCase: locator<GetAppThemeUseCase>(),
         checkFirstInitUseCase: locator<CheckFirstInitUseCase>(),
         setFirstTimeUseCase: locator<SetFirstTimeUseCase>(),
-
       ));
 
-
-
-
-  locator.registerLazySingleton<AppBloc>(
-      () => AppBloc(appUiFacade: locator<AppUiFacade>()));
+  locator.registerLazySingleton<AppBloc>(() => AppBloc(appUiFacade: locator<AppUiFacade>()));
 
   locator.registerLazySingleton<ImagePickerService>(() => ImagePickerService());
 
-
-  locator
-      .registerLazySingleton<ExchangeDataSource>(() => ExchangeDataSourceImpl());
+  locator.registerLazySingleton<ExchangeDataSource>(() => ExchangeDataSourceImpl());
 
   locator.registerLazySingleton<ExchangeRepository>(
       () => ExchangeRepositoryImpl(locator<ExchangeDataSource>()));
@@ -79,17 +67,10 @@ Future<void> setUpLocator() async {
   locator.registerLazySingleton<GetCurrencyUseCase>(
       () => GetCurrencyUseCase(locator<ExchangeRepository>()));
 
-  locator.registerLazySingleton(
-      () => ConvertExchangeUseCase());
+  locator.registerLazySingleton(() => ConvertExchangeUseCase());
 
-
-
-  locator.registerLazySingleton(() =>
-      HomeBloc(locator<GetCurrencyUseCase>()));
+  locator.registerLazySingleton(() => HomeBloc());
 
   locator<BlocHub>().registerByName(locator<AppBloc>(), MembersKeys.appBloc);
-  locator<BlocHub>()
-      .registerByName(locator<HomeBloc>(), MembersKeys.exchangeBloc);
-
+  locator<BlocHub>().registerByName(locator<HomeBloc>(), MembersKeys.exchangeBloc);
 }
-
