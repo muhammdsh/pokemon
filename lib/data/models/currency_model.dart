@@ -14,6 +14,9 @@ class PokemonModel {
     if (json['url'] != null) {
       final data = (json['url'] as String);
       id = data[data.length - 2];
+      final newString = data.substring(0, data.length - 1);
+
+      id = newString.substring(newString.lastIndexOf('/') + 1);
     }
     image = id != null
         ? 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$id.png'
