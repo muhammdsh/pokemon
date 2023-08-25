@@ -38,8 +38,8 @@ class AppTheme {
       appBarTheme: AppBarTheme(color: appThemeColors.primaryColor),
       progressIndicatorTheme: ProgressIndicatorThemeData(color: appThemeColors.primaryColor),
       iconTheme: IconThemeData(
-        color: appThemeColors.primaryColor,
-        size: 18.sp,
+        color: appThemeColors.black,
+        size: 32.sp,
       ),
       dividerTheme: DividerThemeData(color: appThemeColors.divider, thickness: 0.8),
       bottomNavigationBarTheme:

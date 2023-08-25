@@ -8,15 +8,15 @@ import 'package:base_structure/core/services/session_manager.dart';
 import 'package:base_structure/core/services/theme_store.dart';
 import 'package:base_structure/core/usecases/app_theme_usecases.dart';
 import 'package:base_structure/core/usecases/check_first_initialize_usecase.dart';
-import 'package:base_structure/data/datasources/exchage_data_source/exchange_data_source.dart';
-import 'package:base_structure/data/repositories/exchange_reposotory_impl.dart';
+import 'package:base_structure/data/datasources/exchage_data_source/pokemon_data_source.dart';
+import 'package:base_structure/data/repositories/pokemon_reposotory_impl.dart';
 import 'package:base_structure/domain/usecases/convert_exchange_use_case.dart';
 import 'package:base_structure/domain/usecases/get_currencies_usecases.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
 import '../core/services/init_app_store.dart';
-import '../data/datasources/exchage_data_source/exchange_data_source_impl.dart';
+import '../data/datasources/exchage_data_source/pokemon_data_source_impl.dart';
 import '../domain/repositories/exchange_repository.dart';
 import '../presentation/façades/app_facade.dart';
 import '../presentation/flows/home_flow/bloc/animation/animation_cubit.dart';
@@ -60,13 +60,13 @@ Future<void> setUpLocator() async {
 
   locator.registerLazySingleton<ImagePickerService>(() => ImagePickerService());
 
-  locator.registerLazySingleton<ExchangeDataSource>(() => ExchangeDataSourceImpl());
+  locator.registerLazySingleton<PokemonDataSourceImpl>(() => PokemonDataSourceImpl());
 
-  locator.registerLazySingleton<ExchangeRepository>(
-      () => ExchangeRepositoryImpl(locator<ExchangeDataSource>()));
+  locator.registerLazySingleton<PokemonRepositoryImpl>(
+      () => PokemonRepositoryImpl(locator<PokemonDataSourceImpl>()));
 
-  locator.registerLazySingleton<GetCurrencyUseCase>(
-      () => GetCurrencyUseCase(locator<ExchangeRepository>()));
+  locator.registerLazySingleton(() => PokemonUseCase(locator<PokemonRepositoryImpl>()));
+
 
   locator.registerLazySingleton(() => ConvertExchangeUseCase());
 

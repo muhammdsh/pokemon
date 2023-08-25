@@ -49,7 +49,7 @@ class LightModeColors extends AppThemeColors {
   Color get backgroundColor => const Color(0xffffffff);
 
   @override
-  Color get grey => const Color(0xff7a767a);
+  Color get grey => const Color(0xffD9D9D9);
 
   @override
   Color get white => Colors.white;
@@ -106,7 +106,7 @@ class DarkModeColors extends AppThemeColors {
   Color get backgroundColor => const Color(0xFF242424);
 
   @override
-  Color get grey => Colors.grey;
+  Color get grey => const Color(0xffD9D9D9);
 
   @override
   Color get white => Colors.white;

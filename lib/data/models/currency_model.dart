@@ -2,48 +2,29 @@ import 'package:base_structure/core/models/base_model.dart';
 import 'package:base_structure/domain/entities/currency_entity.dart';
 import 'package:flutter/cupertino.dart';
 
-class CurrencyModel extends BaseModel<CurrencyEntity> {
-  final String code;
-  final String currency;
-  final String sell;
-  final String buy;
-  final String flag;
+class PokemonModel {
+  String? name;
+  String? image;
 
-  CurrencyModel({
-    required this.code,
-    required this.currency,
-    required this.sell,
-    required this.buy,
-    required this.flag,
-  });
+  PokemonModel({this.name, this.image});
 
-  factory CurrencyModel.fromJson(Map<String, dynamic> json) {
-    return CurrencyModel(
-      code: json['code'],
-      currency: json['currency'],
-      sell: json['sell'],
-      buy: json['buy'],
-      flag: json['flag'],
-    );
+  PokemonModel.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    String? id;
+    if (json['url'] != null) {
+      final data = (json['url'] as String);
+      id = data[data.length - 2];
+    }
+    image = id != null
+        ? 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$id.png'
+        : null;
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'code': code,
-      'currency': currency,
-      'sell': sell,
-      'buy': buy,
-      'flag': flag,
-    };
-  }
-
-  @override
-  CurrencyEntity toEntity() =>
-      CurrencyEntity(flag: flag,
-          code: code,
-          currency: currency,
-          buy: buy,
-          sell: sell);
-
-
+// @override
+// CurrencyEntity toEntity() =>
+//     CurrencyEntity(flag: flag,
+//         code: code,
+//         currency: currency,
+//         buy: buy,
+//         sell: sell);
 }
