@@ -13,7 +13,6 @@ class PokemonModel {
     String? id;
     if (json['url'] != null) {
       final data = (json['url'] as String);
-      id = data[data.length - 2];
       final newString = data.substring(0, data.length - 1);
 
       id = newString.substring(newString.lastIndexOf('/') + 1);

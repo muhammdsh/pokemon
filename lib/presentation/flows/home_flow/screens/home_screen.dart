@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:base_structure/app+injection/di.dart';
 import 'package:base_structure/core/helper/screen_util/screen_helper.dart';
 import 'package:base_structure/core/navigation/routes.dart';
@@ -95,6 +97,8 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                 },
                 backgroundColor: locator<AppThemeColors>().primaryColor,
               ),
+              if(Platform.isAndroid)
+                ScreenUtil().setVerticalSpacing(30)
             ],
           ),
         ),
