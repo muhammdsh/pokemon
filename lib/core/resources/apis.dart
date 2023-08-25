@@ -1,9 +1,8 @@
 
 class ApiUrls {
-  static String get _baseUrl => 'https://mychangeab.se/exchange/api/';
+  static String get _baseUrl => 'https://pokeapi.co/api/v2/';
 
-  static String get getCurrencies => '${_baseUrl}list.php';
-  static String get daily => '${_baseUrl}daily';
+  static String get getPokemonList => '${_baseUrl}pokemon';
 
 
 }

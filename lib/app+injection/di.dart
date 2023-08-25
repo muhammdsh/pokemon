@@ -12,16 +12,14 @@ import 'package:base_structure/data/datasources/exchage_data_source/exchange_dat
 import 'package:base_structure/data/repositories/exchange_reposotory_impl.dart';
 import 'package:base_structure/domain/usecases/convert_exchange_use_case.dart';
 import 'package:base_structure/domain/usecases/get_currencies_usecases.dart';
-import 'package:base_structure/presentation/fa%C3%A7ades/app_facade.dart';
-import 'package:base_structure/presentation/flows/root_flow/bloc/root_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
 import '../core/services/init_app_store.dart';
 import '../data/datasources/exchage_data_source/exchange_data_source_impl.dart';
 import '../domain/repositories/exchange_repository.dart';
+import '../presentation/façades/app_facade.dart';
 import '../presentation/flows/home_flow/bloc/home_bloc.dart';
-import '../presentation/flows/root_flow/widgets/navigation/navigation_item.dart';
 
 
 final locator = GetIt.instance;
@@ -85,14 +83,13 @@ Future<void> setUpLocator() async {
       () => ConvertExchangeUseCase());
 
 
-  locator.registerLazySingleton(() => NavigationController());
-  locator.registerLazySingleton(() => RootBloc());
+
   locator.registerLazySingleton(() =>
       HomeBloc(locator<GetCurrencyUseCase>()));
 
   locator<BlocHub>().registerByName(locator<AppBloc>(), MembersKeys.appBloc);
-  locator<BlocHub>().registerByName(locator<RootBloc>(), MembersKeys.rootBloc);
   locator<BlocHub>()
       .registerByName(locator<HomeBloc>(), MembersKeys.exchangeBloc);
 
 }
+

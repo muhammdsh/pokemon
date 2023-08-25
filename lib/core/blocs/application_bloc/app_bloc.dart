@@ -36,11 +36,9 @@ class AppBloc extends Bloc<AppEvent, AppState> with BlocMember {
 
   @override
   void receive(String from, CommunicationType data) {
-    print("message Received $data");
 
     switch (data.runtimeType) {
       case AppStatus:
-        print("in AppStatussss");
         setAppStatus(data as AppStatus);
         break;
       case BoolComType:
@@ -77,7 +75,7 @@ extension AppBlocMappers on AppBloc {
     }
     final appStatus = await appUiFacade.checkLoginStatus();
 
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 3));
 
     emit(
       state.copyWith(

@@ -4,33 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TranslationsKeys {
-  static String get changeLanguage => "change_lang";
 
-  static String get changeTheme => "change_theme";
-
-  static String get categories => "categories";
-
-  static String get welcome => "welcome";
-
-  static String get purpose => "purpose";
-
-  static String get signIn => "signIn";
-
-  static String get signUp => "signUp";
-
-  static String get rightClothes => "right_clothes";
-
-  static String get seeexchange => "see_exchange";
-
-  static String get addLocation => "add_location";
-
-  static String get useSearchBar => "use_search_bar";
-
-  static String get cancel => "cancel";
-
-  static String get findLocations => "find_locations";
-
-  static String get myLocation => "my_location";
 
   static String get settings => "settings";
 
@@ -41,46 +15,14 @@ class TranslationsKeys {
   static String get light => "light";
 
   static String get dark => "dark";
-
-  static String get degree => "degree";
-
-  static String get wind => "Wind";
-
-  static String get pressure => "Pressure";
-
-  static String get showDetails => "showDetails";
-
-  static String get exchange => "exchange";
-
-  static String get current => "current";
 }
 
 class ImagesKeys {
   static String get welcomeBackground => "lib/assets/welcomBg.png";
 
-  static String get logo => "lib/assets/logo.png";
+  static String get logo => "lib/assets/images/png/logo.png";
 
-  static String get rain => "lib/assets/images/svg/ph_currency-circle-dollar-thin (1).svg";
 
-  static String get rain1 => "lib/assets/images/svg/ant-design_gold-filled.svg";
-
-  static String get rain2 => "lib/assets/images/svg/Group (1).svg";
-
-  static String get rain3 => "lib/assets/images/svg/Group.svg";
-
-  static String get search => "lib/assets/images/svg/ei_search.svg";
-
-  static String get phoneCall => "lib/assets/images/svg/eva_phone-call-fill.svg";
-
-  static String get flag => "lib/assets/images/svg/flag.svg";
-
-  static String get downArrow => "lib/assets/images/svg/dashicons_arrow-right-alt2.svg";
-
-  static String get switcher => "lib/assets/images/svg/switcher.svg";
-
-  static String get bigLogo => "lib/assets/images/logo_my_change_big.png";
-
-  static String get smallLogo => "lib/assets/images/logo_my_change_small.png";
 }
 
 class AppTheme {

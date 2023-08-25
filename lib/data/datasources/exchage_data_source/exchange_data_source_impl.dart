@@ -10,23 +10,21 @@ import '../../models/currency_model.dart';
 import '../../responses/exchange_response.dart';
 
 class ExchangeDataSourceImpl extends ExchangeDataSource {
-
   @override
   Future<Either<BaseError, List<CurrencyModel>>> getCurrencies() {
-    ApiCallFunction instance = ApiCallFunction(
-        () => request<List<CurrencyModel>, ExchangeResponse>(
-            ApiCallParams<ExchangeResponse>(
-                responseStr: "ExchangeResponse",
-                mapper: (json) => ExchangeResponse.fromJson(json),
-                method: HttpMethod.GET,
-                refreshCaller: 'exchangeDataSourceImpl-getCurrencies',
-                url: ApiUrls.getCurrencies)),
-        []);
+    // ApiCallFunction instance = ApiCallFunction(
+    //     () => request<List<CurrencyModel>, ExchangeResponse>(
+    //         ApiCallParams<ExchangeResponse>(
+    //             responseStr: "ExchangeResponse",
+    //             mapper: (json) => ExchangeResponse.fromJson(json),
+    //             method: HttpMethod.GET,
+    //             refreshCaller: 'exchangeDataSourceImpl-getCurrencies',
+    //             url: ApiUrls.getCurrencies)),
+    //     []);
 
-    addFunction('exchangeDataSourceImpl-getCurrencies', instance);
+    //  addFunction('exchangeDataSourceImpl-getCurrencies', instance);
 
-    return instance.invoke<List<CurrencyModel>?>();
+    // return instance.invoke<List<CurrencyModel>?>();
+    throw UnimplementedError();
   }
-
-
 }
