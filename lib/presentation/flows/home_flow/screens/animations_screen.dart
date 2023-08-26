@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:base_structure/core/helper/screen_util/screen_helper.dart';
 import 'package:base_structure/presentation/flows/home_flow/bloc/home_bloc.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +61,9 @@ class _AnimationScreenState extends State<AnimationScreen> {
                   selectedType: (ShapeType type) {
                     animationCubit.changeShapeType(type);
                   },
-                )
+                ),
+                if(Platform.isAndroid)
+                  ScreenUtil().setVerticalSpacing(30)
               ],
             ),
           ),
