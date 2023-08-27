@@ -23,7 +23,6 @@ The project follows the principles of clean architecture and SOLID principles..
   three shapes and animate the displayed widget accordingly.
   This page demonstrates the usage of animations in Flutter.
 
-- Drag and drop markdown and HTML files into Dillinger
 - Paginated List Page: The paginated list page displays a list of Pokémon.
   The pagination functionality is implemented using a custom widget that handles the pagination logic.
 
